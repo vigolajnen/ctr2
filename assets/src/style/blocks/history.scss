@@ -1,0 +1,56 @@
+.history {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__caption {
+    font-size: 12px;
+    color: #ffffff;
+
+    display: none;
+
+    @include ff(
+      'font-size',
+      (
+        1280px: 12px,
+        1800px: 18px
+      )
+    );
+
+    @media (min-width: 1023px) {
+      display: flex;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      opacity: 0.5;
+      transition: 0.5s;
+    }
+  }
+
+  &__icon {
+    @include rem(
+      (
+        width: 30px,
+        height: 30px,
+        padding: 5px,
+        margin-right: 10px
+      )
+    );
+    background: $color-gray;
+
+    fill: $color-turquoise;
+  }
+}

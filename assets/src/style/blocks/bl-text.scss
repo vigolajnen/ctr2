@@ -1,0 +1,29 @@
+.bl-text {
+  &__inner {
+    max-width: 80%;
+    margin: 0 auto;
+
+    @include rem(padding, 50px 0);
+    text-align: center;
+    color: #ffffff;
+  }
+  &__intro {
+    @include rem(
+      (
+        max-width: 600px,
+        margin: 0 auto 40px,
+        padding-bottom: 30px
+      )
+    );
+
+    line-height: normal;
+    font-family: $Robotomedium;
+    @include ff(
+      "font-size",
+      (
+        7680px: 20px,
+        1280px: 25px
+      )
+    );
+  }
+}

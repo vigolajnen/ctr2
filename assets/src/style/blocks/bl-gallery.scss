@@ -1,0 +1,49 @@
+.bl-gallery {
+  display: flex;
+  justify-content: space-between;
+
+  &__sidebar {
+    width: 20%;
+  }
+  &__grid {
+    width: 75%;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__item {
+    @include rem(margin-bottom, 30px);
+    border: 5px solid transparent;
+    transition: 1s;
+
+    overflow: hidden;
+    width: 95%;
+
+    @include respond-above(md) {
+      width: 48%;
+    }
+    @include respond-above(lg) {
+      width: 33%;
+    }
+  }
+}
+
+.bl-gallery__item.active {
+  border: 5px solid #44b6ae;
+  box-sizing: border-box;
+
+
+  & .box-pic-preview .box-pic-preview__inner {
+    opacity: 0.4;
+    background: #44b6ae;
+  }
+
+  & .box-pic-preview__btn {
+    display: none;
+  }
+
+  & .box-pic-preview__info {
+    display: none;
+  }
+}

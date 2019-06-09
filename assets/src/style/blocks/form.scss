@@ -1,0 +1,174 @@
+.form {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  & .title {
+    @include rem(margin, 0 50px 0 0);
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+
+  &__item {
+    @include rem(margin-bottom, 24px);
+    width: 100%;
+
+    &--links {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include respond-above(xs) {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      & .link {
+        @include rem(margin-top, 20px);
+        @include respond-above(xs) {
+          margin-top: 0;
+          @include rem(margin-left, 20px);
+        }
+      }
+    }
+    & .button.button--blue {
+      @include rem(padding, 0 10px);
+    }
+  }
+
+  &__input {
+    width: 100%;
+
+    @include rem(
+      (
+        padding: 10px 20px,
+        border: 1px solid #b3bbc9,
+        border-radius: 25px
+      )
+    );
+
+    transition: 0.6s;
+
+    &::placeholder {
+      color: #b3bbc9;
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid #b3bbc9;
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
+      transition: 0.6s;
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+
+    @include rem(
+      (
+        padding: 15px,
+        line-height: 25px,
+        font-size: 16px
+      )
+    );
+
+    color: #60749d;
+
+    border-radius: 0;
+    border: 1px solid #c9d0dc;
+
+    resize: none;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #5993ff;
+    }
+  }
+
+  & .button {
+    @include rem(padding, 5px 30px 15px);
+  }
+
+  & .select__gap {
+    position: relative;
+
+    @include rem(
+      (
+        padding: 10px 20px,
+        border: 1px solid #eaebee,
+        border-radius: 25px
+      )
+    );
+
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      @include rem(right, 20px);
+      transform: rotate(180deg) translateY(50%);
+
+      // @include sprite($icon-arrow-close);
+    }
+  }
+
+  &__bottom {
+    text-align: center;
+
+    @media (min-width: $tablet-width) {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
+  &__policy {
+    @include rem(
+      (
+        margin-bottom: 20px,
+        font-size: 14px
+      )
+    );
+
+    & a {
+      color: blue;
+      text-decoration: none;
+    }
+  }
+  &__col {
+    width: 100%;
+
+    @include respond-above(sm) {
+      width: 48%;
+    }
+  }
+}

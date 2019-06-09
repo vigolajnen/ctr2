@@ -1,0 +1,27 @@
+$mobile-width-x: 425px;
+$mobile-width-xl: 600px;
+$tablet-width: 769px;
+$desktop-width: 1140px;
+$desktop-width-x: 1280px;
+$desktop-width-xl: 1540px;
+$desktop-width-xxl: 1920px;
+
+$mobile-width-only: 768px;
+
+// Глобальные переменные
+
+$color-turquoise: #32c5d2;
+$color-gray: #333333;
+
+
+$text-color: #333333;
+
+
+// шрифты
+$OpenSans: "Crowd Funded";
+$Robotolight: "Roboto light";
+$Robotomedium: "Roboto Medium";
+
+$font-base: $Robotolight, "Arial", sans-serif;
+$font-base-medium: $Robotomedium, "Arial", sans-serif;
+$font-title: $OpenSans, "Arial", sans-serif;

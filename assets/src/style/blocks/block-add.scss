@@ -1,0 +1,35 @@
+.block-add {
+  position: relative;
+  z-index: 32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  // height: calc(100vh - 100px); если первый блок
+  margin-top: -50px;
+  bottom: -30px;
+
+  &__plus {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #fff;
+
+    & .button {
+      &:focus,
+      &:hover {
+        opacity: 0.8;
+        transition: 0.5s;
+      }
+    }
+  }
+  &__icon {
+    fill: $color-turquoise;
+    @include rem(
+      (
+        width: 45px,
+        height: 45px
+      )
+    );
+  }
+}

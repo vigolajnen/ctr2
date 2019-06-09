@@ -1,0 +1,63 @@
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: transparent;
+
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+
+  outline: none;
+  background: transparent;
+
+  transition: 1s;
+
+  &--gray {
+    @include rem(padding, 5px 10px);
+
+    background: $color-gray;
+    color: #ffffff;
+
+    &:focus,
+    &:hover {
+      background: darker($color-gray, 1.5);
+    }
+  }
+  &--plus {
+    background: transparent;
+  }
+  &--turquoise {
+    @include rem(padding, 5px 10px);
+    background: $color-turquoise;
+
+    color: #ffffff;
+
+    &:focus,
+    &:hover {
+      background: darker($color-turquoise, 1.5);
+    }
+  }
+  &--white {
+    @include rem(padding, 5px 10px);
+    background: #ffffff;
+    color: $color-turquoise;
+    border: 1px solid $color-turquoise;
+
+    &:focus,
+    &:hover {
+      color: darker($color-turquoise, 1.5);
+      border: 1px solid darker($color-turquoise, 1.5);
+    }
+  }
+  &--red {
+    @include rem(padding, 10px 20px);
+    color: #ffffff;
+    background: #ff8080;
+
+    &:focus,
+    &:hover {
+      background: darker(#ff8080, 1.5);
+    }
+  }
+}

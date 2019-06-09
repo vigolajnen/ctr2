@@ -1,0 +1,256 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  height: 100%;
+  // width: 100%;
+
+  overflow: hidden;
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include rem(
+      (
+        padding: 5px 10px,
+        min-height: 40px,
+        border-bottom: 1px solid #dddddd
+      )
+    );
+  }
+
+  &__list {
+    @include listReset();
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    // @include respond-below(md) {
+    //   overflow-x: scroll;
+    // }
+  }
+
+  &__item {
+    @include rem(padding-right, 10px);
+
+    white-space: nowrap;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  &__link {
+    display: block;
+    @include rem(padding, 15px 0);
+    text-decoration: none;
+    color: $color-turquoise;
+
+    font-family: $font-base-medium;
+    font-weight: 500;
+    line-height: normal;
+    transition: 0.5s;
+
+    @include ff(
+      "font-size",
+      (
+        375px: 15px,
+        1440px: 17px
+      )
+    );
+
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+
+      transition: 0.5s;
+    }
+  }
+  &__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+
+    @include rem(
+      (
+        padding: 25px 15px,
+        border-radius: 0 4px 4px 4px
+      )
+    );
+    background: #ffffff;
+
+    &.scroll-content {
+      height: 100%;
+      overflow-y: auto;
+    }
+  }
+  &__content-inner {
+    height: 100%;
+    @include rem(padding-bottom, 70px);
+
+    & iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__btn-box {
+    display: flex;
+  }
+  &__btn {
+    margin: 0 5px;
+  }
+}
+
+.tabs__item.active .tabs__link,
+.tabs__item .tabs__link:hover {
+  opacity: 1;
+
+  &::before {
+    background: #333333;
+  }
+}
+
+.tabs__panel {
+  display: none;
+}
+
+.tabs__panel.active {
+  display: block;
+  height: 100%;
+}
+
+.tabs__panel p + div {
+  @include rem(margin-top, 15px);
+}
+
+@media screen and (max-width: 600px) {
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tabs__item {
+    width: 100%;
+  }
+
+  .tabs__item:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .tabs__item .tabs__link {
+    border-radius: 0;
+    opacity: 1;
+    top: 0;
+  }
+
+  .tabs__content {
+    border-radius: 0;
+  }
+}
+
+.tabs__settings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.tabs__settings-list {
+  @include listReset();
+  width: 45%;
+}
+.tabs__settings-item {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.tabs__settings-val {
+  width: 100%;
+  padding: 10px;
+  padding-left: 40px;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #dddddd;
+
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 10px 50%;
+  background-image: url("../img/icons/icon-docs.svg");
+
+  opacity: 0.6;
+
+  &--icon-2 {
+    background-image: url("../img/icons/icon-menu-list.svg");
+  }
+
+  &--icon-3 {
+    background-image: url("../img/icons/icon-link.svg");
+  }
+}
+
+.tabs__settings-label {
+  @include ff(
+    "font-size",
+    (
+      1280px: 16px,
+      1560px: 18px
+    )
+  );
+  color: #6a6a6a;
+
+  position: relative;
+  display: block;
+
+  @include rem(padding-left, 40px);
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+
+    @include rem(
+      (
+        top: 3px,
+        left: 0,
+        width: 20px,
+        height: 20px,
+        margin: 0,
+        border-radius: 2px
+      )
+    );
+    border: none;
+    background: #e6e6e6;
+  }
+}
+
+.tabs__settings-checkbox:checked + .tabs__settings-label::before {
+  content: "\2714";
+  position: absolute;
+  z-index: 1;
+
+  @include rem(
+    (
+      top: 3px,
+      left: 0,
+      padding: 0 0 4px 4px,
+      width: 20px,
+      height: 20px,
+      border-radius: 2px
+    )
+  );
+  border: none;
+  background: #d9d9d9;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

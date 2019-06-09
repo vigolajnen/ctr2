@@ -1,0 +1,23 @@
+.link {
+  line-height: normal;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 1s;
+
+  &--white-btn {
+    padding: 20px 30px;
+    color: $text-color;
+    background-color: #ffffff;
+    border-radius: 40px;
+  }
+  &--turquoise-btn {
+    @include rem(padding, 10px 20px);
+    color: #ffffff;
+    background: $color-turquoise;
+
+    &:focus,
+    &:hover {
+      background: darker($color-turquoise, 1.5);
+    }
+  }
+}

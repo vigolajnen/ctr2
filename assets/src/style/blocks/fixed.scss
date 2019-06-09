@@ -1,0 +1,32 @@
+.fixed {
+  width: 100%;
+  @include rem(height, 80px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  transform: translateZ(0);
+  transition: all .2s;
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+
+
+  @media(min-width: $tablet-width) {
+    @include rem(height, 100px);
+  }
+}
+
+.fixed-top {
+  top: 0;
+}
+
+.fixed-bottom {
+  @include rem(top, -100px);
+  transform: translate3d(0, -100%, 0);
+}
+
+.header-mobile--dark {
+  background-color: $color-gray;
+}

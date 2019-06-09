@@ -1,0 +1,20 @@
+.hidden {
+  display: inline-flex;
+  flex-wrap: wrap;
+  &--sm {
+    @include respond-above(sm769) {
+      display: none;
+    }
+  }
+
+  &--md {
+    @include respond-above(md) {
+      display: none;
+    }
+  }
+  &--lg {
+    @include respond-above(lg) {
+      display: none;
+    }
+  }
+}

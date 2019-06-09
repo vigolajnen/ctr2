@@ -1,0 +1,372 @@
+@mixin listReset() {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// цвета
+
+@function darker($color, $tone) {
+  $adjust: -16*$tone;
+  @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust);
+}
+
+// адаптивные шрифты
+
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function calcFluidFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+
+  $k: ($f-max - $f-min)/($w-max - $w-min);
+  $b: $f-min - $k * $w-min;
+
+  $b: $b + $units;
+
+  @return calc(#{$k} * 100vw + #{$b});
+}
+
+@mixin fluidFontSize($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+  font-size: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      font-size: $fallback;
+    }
+
+    font-size: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+
+  @media (min-width: $w-max) {
+    font-size: $f-max;
+  }
+}
+
+//
+$xxxs:      420px;
+$xxs:      480px;
+$xs:       576px;
+$sm:       768px;
+$sm769:    769px;
+$md:       992px;
+$md1100:  1100px;
+$md1280:  1280px;
+$lg:      1300px;
+$xlg:     1600px;
+$xxlg:    1920px;
+
+$breakpoints: (xxxs: $xxxs,
+xxs: $xxs,
+xs: $xs,
+sm: $sm,
+sm769: $sm769,
+md: $md,
+md1100: $md1100,
+md1280: $md1280,
+lg: $lg,
+xlg: $xlg,
+xxlg: $xxlg,
+xxlg100: $xxlg);
+
+
+// Media Queries
+
+
+//  RESPOND ABOVE
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-above(sm) {}
+@mixin respond-above($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+
+    // If the breakpoint doesn't exist in the map.
+  }
+
+  @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+
+//
+//  RESPOND BELOW
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-below(sm) {}
+@mixin respond-below($breakpoint) {
+
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+
+    // If the breakpoint doesn't exist in the map.
+  }
+
+  @else {
+
+    // Log a warning.
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+
+//
+//  RESPOND BETWEEN
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// @include respond-between(sm, md) {}
+@mixin respond-between($lower, $upper) {
+
+  // If both the lower and upper breakpoints exist in the map.
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+
+    // Get the lower and upper breakpoints.
+    $lower-breakpoint: map-get($breakpoints, $lower);
+    $upper-breakpoint: map-get($breakpoints, $upper);
+
+    // Write the media query.
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+      @content;
+    }
+
+    // If one or both of the breakpoints don't exist.
+  }
+
+  @else {
+
+    // If lower breakpoint is invalid.
+    @if (map-has-key($breakpoints, $lower)==false) {
+
+      // Log a warning.
+      @warn 'Your lower breakpoint was invalid: #{$lower}.';
+    }
+
+    // If upper breakpoint is invalid.
+    @if (map-has-key($breakpoints, $upper)==false) {
+
+      // Log a warning.
+      @warn 'Your upper breakpoint was invalid: #{$upper}.';
+    }
+  }
+}
+
+
+
+// шрифты
+
+@mixin ff($property, $map) {
+  $length: length(map-keys($map));
+
+  @if $length < 2 {
+    @error "ff() $map requires at least values";
+  }
+
+  $map: map-sort($map);
+  $keys: map-keys($map);
+  #{$property}: map-get($map, nth($keys, 1));
+
+  @for $i from 1 through $length - 1 {
+    @media (min-width: nth($keys, $i)) {
+      #{$property}: linear-interpolation((nth($keys, $i): map-get($map, nth($keys, $i)), nth($keys, $i + 1): map-get($map, nth($keys, $i + 1))));
+    }
+  }
+
+  @media (min-width: nth($keys, $length)) {
+    #{$property}: map-get($map, nth($keys, $length));
+  }
+}
+
+@function linear-interpolation($map) {
+  $keys: map-keys($map);
+
+  @if length($keys) !=2 {
+    @error "linear-interpolation() $map must be exactly 2 values";
+  }
+
+  $m: (map-get($map, nth($keys, 2)) - map-get($map, nth($keys, 1))) / (nth($keys, 2) - nth($keys, 1));
+  $b: map-get($map, nth($keys, 1)) - $m * nth($keys, 1);
+  $sign: "+";
+
+  @if $b < 0 {
+    $sign: "-";
+    $b: abs($b);
+  }
+
+  @return calc(#{$m * 100}vw #{$sign} #{$b});
+}
+
+@function list-sort($list) {
+  $sortedlist: ();
+
+  @while length($list)>0 {
+    $value: nth($list, 1);
+
+    @each $item in $list {
+      @if $item < $value {
+        $value: $item;
+      }
+    }
+
+    $sortedlist: append($sortedlist, $value, "space");
+    $list: list-remove($list, index($list, $value));
+  }
+
+  @return $sortedlist;
+}
+
+@function map-sort($map) {
+  $keys: list-sort(map-keys($map));
+  $sortedMap: ();
+
+  @each $key in $keys {
+    $sortedMap: map-merge($sortedMap, ($key: map-get($map, $key)));
+  }
+
+  @return $sortedMap;
+}
+
+@function list-remove($list, $index) {
+  $newList: ();
+
+  @for $i from 1 through length($list) {
+    @if $i !=$index {
+      $newList: append($newList, nth($list, $i), "space");
+    }
+  }
+
+  @return $newList;
+}
+
+
+// rem
+
+/**
+ * Rem-converter mixin to convert px to rem
+ */
+@mixin px-to-rem($pxValue, $property: "font-size", $standard-size: 16) {
+  #{$property}: $pxValue + px;
+  #{$property}: $pxValue/$standard-size + rem;
+}
+
+/**
+ * Usages
+ */
+
+// // 1.1 Using it with font-size (default property)
+// h1 {
+//   @include px-to-rem(32);
+// }
+
+
+// // 1.2 Using it with padding (custom property)
+// h1{
+//   @include px-to-rem(20, padding);
+
+// }
+
+
+$rem-baseline: 16px !default;
+$rem-fallback: false !default;
+$rem-px-only: false !default;
+
+@function rem-separator($list, $separator: false) {
+  @if $separator == "comma" or $separator == "space" {
+    @return append($list, null, $separator);
+  }
+
+  @if function-exists("list-separator") == true {
+    @return list-separator($list);
+  }
+
+  // list-separator polyfill by Hugo Giraudel (https://sass-compatibility.github.io/#list_separator_function)
+  $test-list: ();
+  @each $item in $list {
+    $test-list: append($test-list, $item, space);
+  }
+
+  @return if($test-list == $list, space, comma);
+}
+
+@mixin rem-baseline($zoom: 100%) {
+  font-size: $zoom / 16px * $rem-baseline;
+}
+
+@function rem-convert($to, $values...) {
+  $result: ();
+  $separator: rem-separator($values);
+
+  @each $value in $values {
+    @if type-of($value) == "number" and unit($value) == "rem" and $to == "px" {
+      $result: append($result, $value / 1rem * $rem-baseline, $separator);
+    } @else if type-of($value) == "number" and unit($value) == "px" and $to == "rem" {
+      $result: append($result, $value / $rem-baseline * 1rem, $separator);
+    } @else if type-of($value) == "list" {
+      $value-separator: rem-separator($value);
+      $value: rem-convert($to, $value...);
+      $value: rem-separator($value, $value-separator);
+      $result: append($result, $value, $separator);
+    } @else {
+      $result: append($result, $value, $separator);
+    }
+  }
+
+  @return if(length($result) == 1, nth($result, 1), $result);
+}
+
+@function rem($values...) {
+  @if $rem-px-only {
+    @return rem-convert(px, $values...);
+  } @else {
+    @return rem-convert(rem, $values...);
+  }
+}
+
+@mixin rem($properties, $values...) {
+  @if type-of($properties) == "map" {
+    @each $property in map-keys($properties) {
+      @include rem($property, map-get($properties, $property));
+    }
+  } @else {
+    @each $property in $properties {
+      @if $rem-fallback or $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if not $rem-px-only {
+        #{$property}: rem-convert(rem, $values...);
+      }
+    }
+  }
+}
+
+
+
+// Function px to vw

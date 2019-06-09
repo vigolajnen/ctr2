@@ -1,0 +1,39 @@
+.bl-edit-form {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  &__field {
+    margin-bottom: 15px;
+    font-family: $Robotomedium;
+    font-size: 14px;
+    color: #737373;
+  }
+  &__val {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 0;
+  }
+  &__textarea {
+    min-height: 150px;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 0;
+    resize: none;
+  }
+  &__box {
+    width: 50%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__pic {
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px 2px #9e9a9a;
+  }
+  &__actions {
+    display: flex;
+    justify-content: space-around;
+  }
+}

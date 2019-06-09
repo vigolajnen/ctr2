@@ -1,0 +1,12 @@
+.component-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 200px);
+
+  overflow: hidden;
+  clip: rect(auto, auto, auto, auto);
+  pointer-events: none;
+  // z-index: -1;
+}

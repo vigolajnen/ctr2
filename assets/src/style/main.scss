@@ -1,0 +1,41 @@
+
+@import "variables";
+@import "mixins";
+@import "utils";
+@import "base";
+
+
+
+// Подключение своих SCSS файлов
+@import "blocks/bg-image";
+@import "blocks/bl-edit-form";
+@import "blocks/bl-gallery";
+@import "blocks/bl-modal";
+@import "blocks/bl-text";
+@import "blocks/bl-widgets";
+@import "blocks/block-add";
+@import "blocks/block-control";
+@import "blocks/block-w";
+@import "blocks/box-pic-preview";
+@import "blocks/component-bg";
+@import "blocks/compotent-bl-text";
+@import "blocks/container-fluid";
+@import "blocks/container-list";
+@import "blocks/device-box";
+@import "blocks/devices";
+@import "blocks/dropdown";
+@import "blocks/fixed";
+@import "blocks/form";
+@import "blocks/hidden";
+@import "blocks/history";
+@import "blocks/link";
+@import "blocks/button";
+@import "blocks/main-bar";
+@import "blocks/page-header";
+@import "blocks/page-footer";
+@import "blocks/page";
+@import "blocks/popup";
+@import "blocks/subtabs";
+@import "blocks/tabs";
+@import "blocks/title";
+@import "blocks/widget-preview";

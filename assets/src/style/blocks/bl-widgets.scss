@@ -1,0 +1,127 @@
+.bl-widgets {
+  display: flex;
+  justify-content: space-between;
+
+  @include rem(padding-top, 25px);
+
+  overflow: hidden;
+  overflow-y: auto;
+
+  &__sidebar {
+    width: 35%;
+    height: 100%;
+
+    @include rem(padding, 0 15px);
+
+    @include respond-above(md) {
+      width: 25%;
+    }
+
+    @include respond-above(xxlg) {
+      width: 20%;
+    }
+  }
+  &__content {
+    width: 63%;
+    // height: 100%;
+    height: 85vh;
+    overflow: hidden;
+
+    @include respond-above(md) {
+      width: 75%;
+    }
+
+    @include respond-above(xxlg) {
+      width: 80%;
+    }
+
+    // overflow-y: scroll;
+  }
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+
+    @include rem(padding-top, 5px);
+
+    @include respond-above(md) {
+      flex-direction: row;
+    }
+
+    & .widget-preview {
+      overflow: hidden;
+      width: 95%;
+
+      @include rem(
+        (
+          // max-width: 445px,
+          margin-bottom: 40px,
+        )
+      );
+
+      @include respond-above(md) {
+        width: 45%;
+      }
+
+      @include respond-above(xxlg) {
+        width: 30%;
+      }
+    }
+  }
+  &__list {
+    @include listReset();
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include rem(
+      (
+        padding: 8px 0,
+        border-bottom: 1px solid #dddddd,
+      )
+    );
+
+    cursor: pointer;
+
+    @include respond-above(xxlg) {
+      @include rem(padding, 15px 0);
+    }
+  }
+  &__name {
+    font-family: $font-base-medium;
+    font-weight: 500;
+    @include ff(
+      'font-size',
+      (
+        1280px: 16px,
+        1560px: 18px,
+        1800px: 22px
+      )
+    );
+    color: #6a6a6a;
+  }
+  &__icon {
+    fill: $color-turquoise;
+  }
+}
+
+.bl-widgets__item .bl-widgets__icon {
+  opacity: 0;
+}
+
+.bl-widgets__item:hover .bl-widgets__name {
+  color: #000000;
+  cursor: pointer;
+}
+
+.bl-widgets__item.active .bl-widgets__name {
+  color: #000000;
+}
+.bl-widgets__item.active .bl-widgets__icon {
+  opacity: 1;
+  transform: translateX(5%);
+  transition: 1s;
+}

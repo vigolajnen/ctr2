@@ -1,0 +1,254 @@
+.bl-modal {
+  /* Скрываем окна  */
+  // opacity: 0;
+  visibility: hidden;
+
+  display: none;
+
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  z-index: 35;
+
+  padding: 0;
+  // @include rem(padding-bottom, 40px);
+  border-radius: 0;
+  // background-color: #ffffff;
+  transition: 0.3s all;
+
+  &[data-index="5"] {
+    z-index: 36;
+  }
+
+  &--xs {
+    max-width: 700px;
+    width: 100%;
+
+    animation-name: slideRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    visibility: visible;
+
+    @include respond-above(md) {
+      width: 40%;
+    }
+  }
+
+  &--sm {
+    max-width: 1000px;
+    width: 100%;
+
+    animation-name: slideRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    visibility: visible;
+
+    @include respond-above(md) {
+      width: 70%;
+    }
+  }
+
+  &__wrap {
+    &--xs {
+    max-width: 700px;
+    width: 100%;
+
+    animation-name: slideRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    visibility: visible;
+
+    @include respond-above(md) {
+      width: 40%;
+    }
+  }
+
+  &--sm {
+    max-width: 1000px;
+    width: 100%;
+
+    animation-name: slideRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    visibility: visible;
+
+    @include respond-above(md) {
+      width: 70%;
+    }
+  }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    pointer-events: all;
+    display: flex;
+    flex-flow: column nowrap;
+
+    width: 100%;
+    // @include rem(min-width, 1024px);
+    height: calc(100vh - 50px);
+
+    background-color: #ffffff;
+    user-select: text;
+
+    &--gray {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #ffffff;
+
+    @include rem(
+      (
+        padding: 5px 15px,
+        min-height: 40px,
+        border-bottom: 1px solid #dddddd
+      )
+    );
+  }
+  &__body {
+    @include rem(padding, 15px);
+    height: calc(100% - 90px);
+    background: #ffffff;
+
+    @include respond-above(xxlg) {
+      height: calc(100% - 115px);
+    }
+    &--no-pg {
+      padding: 0;
+    }
+
+    &.scroll-content {
+      overflow-y: auto;
+    }
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    font-family: $font-base-medium;
+    font-weight: 600;
+    @include ff(
+      "font-size",
+      (
+        1280px: 16px,
+        1560px: 18px,
+        1800px: 25px
+      )
+    );
+    color: $color-turquoise;
+
+    @include respond-above(xxlg) {
+      @include rem(padding, 15px 0);
+    }
+  }
+  &__title-icon {
+    @include rem(margin-right, 10px);
+    fill: $color-turquoise;
+  }
+  &__close {
+    background: transparent;
+  }
+  &__icon {
+    @include respond-above(xxlg) {
+      @include rem(
+        (
+          width: 30px,
+          height: 30px
+        )
+      );
+    }
+  }
+  &__btn-box {
+    display: flex;
+  }
+  &__btn {
+    margin: 0 5px;
+  }
+}
+
+.active {
+  // opacity: 0;
+  display: block;
+}
+
+
+
+.overlay {
+  /* Скрываем подложку  */
+  opacity: 0;
+  visibility: hidden;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 34;
+  transition: 0.3s all;
+}
+
+/* Стили для активных классов подложки и окна */
+
+.bl-modal.active,
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bl-modal.active {
+  display: block;
+
+  // animation: show 2s 1;
+  // // animation-fill-mode: forwards;
+  // animation-delay: 1s;
+  // // transition: 1s;
+
+  animation-name: slideRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.bl-modal.anim-hover.active {
+  display: block;
+
+  animation: show 1s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+  transition: 1s;
+
+}
+
+.bl-modal__body.bl-modal__body--height {
+  height: calc(100vh - 50px);
+}
+
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

@@ -1,0 +1,110 @@
+.block-control {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &__group {
+    display: flex;
+  }
+  &__item {
+    position: relative;
+
+    @include rem(
+      (
+        margin: 10px 5px,
+        height: 40px,
+        width: 40px
+      )
+    );
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    width: 15px;
+    height: 13px;
+
+    fill: #ffffff;
+
+    &--dots {
+      top: 5px;
+      transform: rotate(90deg);
+    }
+    &--1 {
+      transform: rotate(180deg);
+    }
+  }
+  &__box-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 50%;
+    overflow: hidden;
+    background: darken($color-turquoise, 5);
+  }
+  &__btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+    overflow: hidden;
+    line-height: 0.8;
+    background: darken($color-turquoise, 5);
+
+    opacity: 0.6;
+    transition: 1s;
+    cursor: pointer;
+    &--arrow {
+      height: 50%;
+      border-radius: 0;
+      &:first-child {
+        top: 10px;
+
+        & .block-control__icon {
+          top: 2px;
+        }
+      }
+      &:last-child {
+        bottom: -10px;
+        top: auto;
+
+        & .block-control__icon {
+          top: -2px;
+        }
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+      background: $color-turquoise;
+    }
+  }
+}
+
+.block-control__item.active .block-control__btn {
+  opacity: 1;
+  background: $color-turquoise;
+}
+
+.block-control__item.active .dropdown {
+  display: block;
+}

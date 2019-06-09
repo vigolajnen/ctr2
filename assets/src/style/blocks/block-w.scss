@@ -1,0 +1,11 @@
+.block-w {
+  position: relative;
+  height: calc(100vh - 200px);
+  overflow: hidden;
+
+  & .container-fluid {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    height: 100%;
+  }
+}

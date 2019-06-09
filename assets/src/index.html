@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>К</title>
+    //= template/_head.html
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="content page">
+        <iframe name="content" style="z-index: 31" class="js-iframe bl-iframe" data-index="0" src="content.html"
+          width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+
+      //= template/_page-footer.html
+
+    </div>
+
+    //= template/_popup-add-w.html
+    //= template/_popup-bl-edit.html
+    //= template/_popup-images.html
+    //= template/_popup-structure.html
+    //= template/_popup-settings.html
+
+    <iframe name="code" class="js-iframe" src="code.html" frameborder="0"></iframe>
+    <iframe name="properties" class="js-iframe" src="properties.html" frameborder="0"></iframe>
+
+    <!-- Подложка под модальным окном -->
+    <div class="overlay js-overlay-bl-modal"></div>
+
+    //= template/_footer.html
+  </body>
+</html>

@@ -1,0 +1,14 @@
+.title {
+  margin: 0 0 40px 0;
+  font-weight: 600;
+  line-height: 1;
+  font-family: $Robotomedium;
+  @include ff(
+    "font-size",
+    (
+      7680px: 30px,
+      1280px: 40px,
+      1800px: 60px
+    )
+  );
+}
