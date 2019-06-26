@@ -1,7 +1,7 @@
 // модальные окна
 (function () {
   document.addEventListener("DOMContentLoaded", function() {
-    
+
     var modalButtons = document.querySelectorAll(".js-bl-modal-btn"),
       overlay = document.querySelector(".js-overlay-bl-modal"),
       closeButtons = document.querySelectorAll(".js-bl-modal-close");
@@ -16,24 +16,25 @@
             '.bl-modal[data-index="' + modalId + '"]'
           );
         }
-        
+
         if (modalElem) {
           modalElem.classList.add("active");
           overlay.classList.add("active");
         }
-        
+
       });
     });
 
     closeButtons.forEach(function(item) {
       item.addEventListener("click", function(e) {
+        // var parentModal = this.closest(".bl-modal");
         var parentModal = this.closest(".bl-modal");
 
         parentModal.classList.remove("active");
         if (overlay) {
           overlay.classList.remove("active");
         }
-        
+
       });
     });
 

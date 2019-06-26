@@ -1,6 +1,7 @@
 .bl-modal {
   /* Скрываем окна  */
   // opacity: 0;
+
   visibility: hidden;
 
   display: none;
@@ -11,7 +12,7 @@
 
   top: 0;
   left: 0;
-  z-index: 35;
+
 
   padding: 0;
   // @include rem(padding-bottom, 40px);
@@ -202,12 +203,15 @@
 
 .bl-modal.active,
 .overlay.active {
+
   opacity: 1;
   visibility: visible;
 }
 
 .bl-modal.active {
   display: block;
+
+  z-index: 36;
 
   // animation: show 2s 1;
   // // animation-fill-mode: forwards;
@@ -218,6 +222,7 @@
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
 }
+
 
 .bl-modal.anim-hover.active {
   display: block;
