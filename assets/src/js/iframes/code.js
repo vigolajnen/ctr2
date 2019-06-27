@@ -5,8 +5,8 @@
     target: 2
   });
 
-  if (document.querySelector(".js-bl-modal-close")) {
-    document.querySelector(".js-bl-modal-close").addEventListener("click", function(evt) {
+  if (document.querySelector(".js-btn-close")) {
+    document.querySelector(".js-btn-close").addEventListener("click", function(evt) {
       parent.postMessage({
         source: 2,
         type: "close",
@@ -14,5 +14,5 @@
       });
     });
   }
-  
+
 })();

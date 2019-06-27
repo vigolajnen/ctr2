@@ -1,6 +1,6 @@
 (function() {
   document.addEventListener("DOMContentLoaded", function() {
-    var openIframes = document.querySelectorAll(".js-bl-modal-btn");
+    var openIframes = document.querySelectorAll(".js-btn");
 
     openIframes.forEach(function(btn) {
       btn.addEventListener("click", function(evt) {
@@ -40,7 +40,7 @@
       });
     });
 
-    var closeButtons = document.querySelectorAll(".js-bl-modal-close");
+    var closeButtons = document.querySelectorAll(".js-btn-close");
     closeButtons.forEach(function(item) {
       item.addEventListener("click", function(e) {
         var parentModal = this.closest(".bl-modal");
@@ -50,7 +50,7 @@
       });
     });
 
-    var subBtn = document.querySelector(".js-bl-modal-btn-sub");
+    var subBtn = document.querySelector(".js-btn-sub");
     if (subBtn) {
       subBtn.addEventListener("click", function(evt) {
         evt.preventDefault();
@@ -63,7 +63,7 @@
       });
     }
 
-    // var overlay = document.querySelectorAll(".overlay");
+    // var overlay = document.querySelectorAll(".js-overlay");
     // overlay.forEach(function(item) {
     //   item.addEventListener("click", function(evt) {
 
@@ -81,7 +81,7 @@
   });
 
   window.addEventListener("message", function(evt) {
-    var openIframes = document.querySelectorAll(".js-bl-modal-btn");
+    var openIframes = document.querySelectorAll(".js-btn");
     openIframes.forEach(function(btn) {
       btn.addEventListener("click", function(evt) {
         evt.preventDefault();
@@ -95,7 +95,7 @@
           blockEditFrame.parentElement.classList.add("active");
 
           if (blockEditFrame.classList.contains("js-iframe")) {
-            var closeBtnFrame = blockEditFrame.contentDocument.querySelector(".js-bl-modal-close");
+            var closeBtnFrame = blockEditFrame.contentDocument.querySelector(".js-btn-close");
 
             if (closeBtnFrame) {
               closeBtnFrame.addEventListener("click", function(evt) {
