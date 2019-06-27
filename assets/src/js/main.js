@@ -7,7 +7,6 @@
 //= iframes/properties.js
 
 //= tabs-2.js
-//= popup.js
 //= controls.js
 
 //= index.js

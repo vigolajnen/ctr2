@@ -90,26 +90,6 @@ img {
   overflow: hidden;
 }
 
-.overlay-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: hidden;
-  outline: none;
-  z-index: 11;
-  user-select: none;
-}
-
-.overlay-area.on {
-  pointer-events: all;
-}
-
 .scroll-content {
   overflow-y: auto;
   height: 100%;
@@ -117,7 +97,6 @@ img {
 
 .js-iframe {
   display: none;
-  // display: block;
 
   position: absolute;
   top: 0;
@@ -179,7 +158,7 @@ img {
   }
 }
 
-.container-xs {
+.wrapper-xs {
   width: 320px;
   min-width: 320px;
   margin: 0 auto;
@@ -187,7 +166,7 @@ img {
   background-color: #ffffff;
 }
 
-.container-sm {
+.wrapper-sm {
   width: 768px;
   min-width: 768px;
   margin: 0 auto;

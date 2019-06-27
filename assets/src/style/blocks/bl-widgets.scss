@@ -23,7 +23,6 @@
   }
   &__content {
     width: 63%;
-    // height: 100%;
     height: 85vh;
     overflow: hidden;
 
@@ -35,7 +34,6 @@
       width: 80%;
     }
 
-    // overflow-y: scroll;
   }
   &__inner {
     display: flex;
@@ -55,7 +53,6 @@
 
       @include rem(
         (
-          // max-width: 445px,
           margin-bottom: 40px,
         )
       );
