@@ -21,12 +21,6 @@
           bl.parentElement.classList.remove("active");
         });
 
-        // document.addEventListener("keypress", function(evt) {
-        //   if (evt.keyCode === 27) {
-        //     console.log("escape pressed");
-        //   }
-        // });
-
         if (idBtn == 7) {
           document.querySelector(".wrapper").classList.add("wrapper-xs");
           document.querySelector(".wrapper").classList.remove("wrapper-sm");
@@ -62,22 +56,6 @@
           .parentElement.classList.add("active");
       });
     }
-
-    // var overlay = document.querySelectorAll(".js-overlay");
-    // overlay.forEach(function(item) {
-    //   item.addEventListener("click", function(evt) {
-
-    //     item.firstElementChild.addEventListener('click', function(evt) {
-    //       evt.preventDefault();
-    //       console.log("firstElementChild");
-    //       item.classList.add("active");
-    //     });
-
-    //     item.classList.remove("active");
-    //     // item.firstElementChild.classList.remove("active");
-
-    //   });
-    // });
   });
 
   window.addEventListener("message", function(evt) {
@@ -95,14 +73,18 @@
           blockEditFrame.parentElement.classList.add("active");
 
           if (blockEditFrame.classList.contains("js-iframe")) {
-            var closeBtnFrame = blockEditFrame.contentDocument.querySelector(".js-btn-close");
+            var closeBtnFrame = blockEditFrame.contentDocument.querySelector(
+              ".js-btn-close"
+            );
 
             if (closeBtnFrame) {
               closeBtnFrame.addEventListener("click", function(evt) {
                 evt.preventDefault();
                 blockEditFrame.classList.remove("active");
                 blockEditFrame.parentElement.classList.remove("active");
-                blockEditFrame.contentDocument.querySelector(".bl-modal").classList.add("active");
+                blockEditFrame.contentDocument
+                  .querySelector(".bl-modal")
+                  .classList.add("active");
               });
             }
           }
@@ -110,4 +92,5 @@
       });
     });
   });
+
 })();
