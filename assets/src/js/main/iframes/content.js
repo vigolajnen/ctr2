@@ -14,21 +14,38 @@
       );
     });
   }
-  
-  if (document.querySelector("button[data-index='1']")) {
-    document.querySelector("button[data-index='1']").addEventListener('click', function (evt) {
-        console.log(evt);
-      evt.preventDefault();
 
-      parent.postMessage(
-        {
-          source: 0,
-          type: "widget",
-          target: 1
-        },
-        "*"
-      );
-    });
+  if (document.querySelector("button[data-index='1']")) {
+    document
+      .querySelector("button[data-index='1']")
+      .addEventListener("click", function(evt) {
+        console.log(evt);
+        evt.preventDefault();
+
+        parent.postMessage(
+          {
+            source: 0,
+            type: "widget",
+            target: 1
+          },
+          "*"
+        );
+      });
+  } else if (document.querySelector("span[data-index='10']")) {
+    document
+      .querySelector("span[data-index='10']")
+      .addEventListener("click", function(evt) {
+        console.log(evt);
+        evt.preventDefault();
+
+        parent.postMessage(
+          {
+            source: 0,
+            type: "properties",
+            target: 10
+          },
+          "*"
+        );
+      });
   }
-  
 })();
