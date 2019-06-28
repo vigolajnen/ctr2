@@ -28,6 +28,7 @@
   }
   &__btn {
     color: #ffffff;
+    cursor: pointer;
   }
   &__icon {
     margin-right: 10px;
@@ -36,4 +37,17 @@
 
     fill: #ffffff;
   }
+}
+
+.bl-dropdown__item:focus .bl-dropdown__btn,
+.bl-dropdown__item:hover .bl-dropdown__btn,
+.bl-dropdown__item:active .bl-dropdown__btn {
+  color: $color-turquoise;
+  transition: 0.5s;
+}
+.bl-dropdown__item:focus .bl-dropdown__icon,
+.bl-dropdown__item:hover .bl-dropdown__icon,
+.bl-dropdown__item:active .bl-dropdown__icon {
+  fill: $color-turquoise;
+  transition: 0.5s;
 }

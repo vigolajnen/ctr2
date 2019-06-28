@@ -1,19 +1,20 @@
-"use strict";
+(function() {
+  document.addEventListener("DOMContentLoaded", function() {
+    var controlBlocks = document.querySelectorAll(".block-control__item");
+    var controlItems = document.querySelectorAll(".block-control__btn");
 
-// 
-var controlsWrapper = document.querySelector(".block-control");
-var controlItems = document.querySelectorAll(".block-control__btn");
+    controlItems.forEach(function(item) {
+      item.addEventListener("click", function(evt) {
+        evt.preventDefault();
 
-if (controlsWrapper) {
-  controlsWrapper.addEventListener("click", function(evt) {
-    evt.preventDefault();
-    var activeItem = evt.target;
-    if (activeItem.tagName != "SPAN") return;
+        controlBlocks.forEach(function(item) {
+          if (item.classList.contains("active")) {
+            item.classList.remove("active");
+          }
+        });
 
-    for (var i = 0; i < controlItems.length; i++) {
-      controlItems[i].parentNode.classList.remove("active");
-    }
-
-    activeItem.parentNode.classList.add("active");
+        item.parentElement.classList.add("active");
+      });
+    });
   });
-}
+})();

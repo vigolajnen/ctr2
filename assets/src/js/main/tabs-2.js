@@ -1,5 +1,3 @@
-"use strict";
-
 (function() {
   var jsTriggers = document.querySelectorAll(".js-tab-trigger");
   jsTriggers.forEach(function(trigger) {

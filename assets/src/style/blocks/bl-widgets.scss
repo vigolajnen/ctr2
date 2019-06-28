@@ -33,7 +33,6 @@
     @include respond-above(xxlg) {
       width: 80%;
     }
-
   }
   &__inner {
     display: flex;
@@ -53,7 +52,7 @@
 
       @include rem(
         (
-          margin-bottom: 40px,
+          margin-bottom: 40px
         )
       );
 
@@ -77,7 +76,7 @@
     @include rem(
       (
         padding: 8px 0,
-        border-bottom: 1px solid #dddddd,
+        border-bottom: 1px solid #dddddd
       )
     );
 
@@ -91,7 +90,7 @@
     font-family: $font-base-medium;
     font-weight: 500;
     @include ff(
-      'font-size',
+      "font-size",
       (
         1280px: 16px,
         1560px: 18px,
@@ -109,9 +108,16 @@
   opacity: 0;
 }
 
-.bl-widgets__item:hover .bl-widgets__name {
+.bl-widgets__item:focus .bl-widgets__name,
+.bl-widgets__item:hover .bl-widgets__name,
+.bl-widgets__item:active .bl-widgets__name {
   color: #000000;
   cursor: pointer;
+}
+.bl-widgets__item:focus .bl-widgets__icon,
+.bl-widgets__item:hover .bl-widgets__icon,
+.bl-widgets__item:active .bl-widgets__icon {
+  animation: arrow-show 1s forwards;
 }
 
 .bl-widgets__item.active .bl-widgets__name {
@@ -121,4 +127,16 @@
   opacity: 1;
   transform: translateX(5%);
   transition: 1s;
+}
+
+@keyframes arrow-show {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
 }

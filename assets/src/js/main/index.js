@@ -1,11 +1,12 @@
 (function() {
   document.addEventListener("DOMContentLoaded", function() {
-    var openIframes = document.querySelectorAll(".js-btn");
+    var navButtons = document.querySelectorAll(".js-btn");
 
-    openIframes.forEach(function(btn) {
+    navButtons.forEach(function(btn) {
       btn.addEventListener("click", function(evt) {
         evt.preventDefault();
         var idBtn = this.getAttribute("data-index");
+
         var blockEdit = document.querySelector(
           ".w-edit[data-index='" + idBtn + "']"
         );
@@ -15,10 +16,10 @@
           blockEdit.parentElement.classList.add("active");
         }
 
-        var blClose = document.querySelectorAll(".w-close");
-        blClose.forEach(function(bl) {
-          bl.classList.remove("active");
-          bl.parentElement.classList.remove("active");
+        var blockClose = document.querySelectorAll(".w-close");
+        blockClose.forEach(function(item) {
+          item.classList.remove("active");
+          item.parentElement.classList.remove("active");
         });
 
         if (idBtn == 7) {
@@ -33,6 +34,8 @@
         }
       });
     });
+
+
 
     var closeButtons = document.querySelectorAll(".js-btn-close");
     closeButtons.forEach(function(item) {
@@ -58,11 +61,9 @@
     }
   });
 
-
-  console.log(event);
+  console.log(event || window.event);
 
   window.addEventListener("message", function(evt) {
-
     if (evt.data.target == 1) {
       parent.document
         .querySelector(".bl-modal[data-index='1']")
@@ -78,16 +79,16 @@
         .querySelector(".bl-modal[data-index='6']")
         .parentElement.classList.add("active");
     }
-    else if (evt.data.target == 10) {
-      parent.document
-        .querySelector(".bl-modal[data-index='10']")
-        .classList.add("active");
-      parent.document
-        .querySelector(".bl-modal[data-index='10']")
-        .parentElement.classList.add("active");
-    }
-    var openIframes = document.querySelectorAll(".js-btn");
-    openIframes.forEach(function(btn) {
+    // else if (evt.data.target == 10) {
+    //   parent.document
+    //     .querySelector(".bl-modal[data-index='10']")
+    //     .classList.add("active");
+    //   parent.document
+    //     .querySelector(".bl-modal[data-index='10']")
+    //     .parentElement.classList.add("active");
+    // }
+    var openEditBlocks = document.querySelectorAll(".js-btn");
+    openEditBlocks.forEach(function(btn) {
       btn.addEventListener("click", function(evt) {
         evt.preventDefault();
         var idBtn = this.getAttribute("data-index");
