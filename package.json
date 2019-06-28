@@ -14,6 +14,7 @@
     "Firefox ESR"
   ],
   "dependencies": {
+    "foreach-polyfill": "^1.0.3",
     "picturefill": "^3.0.3",
     "svg4everybody": "^2.1.9"
   },
