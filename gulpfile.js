@@ -2,31 +2,34 @@
 
 /* пути к исходным файлам (src), к готовым файлам (build), а также к тем, за изменениями которых нужно наблюдать (watch) */
 var path = {
-    build: {
-        html: 'assets/build/',
-        js: 'assets/build/js/',
-        css: 'assets/build/css/',
-        img: 'assets/build/img/',
-        svg: 'assets/build/img/',
-        fonts: 'assets/build/fonts/'
-    },
-    src: {
-        html: 'assets/src/*.html',
-        js: 'assets/src/js/main.js',
-        style: 'assets/src/style/main.scss',
-        img: 'assets/src/img/**/*.*',
-        svg: 'assets/src/img/icons/icon-*.svg',
-        fonts: 'assets/src/fonts/**/*.*'
-    },
-    watch: {
-        html: 'assets/src/**/*.html',
-        js: 'assets/src/js/**/*.js',
-        css: 'assets/src/style/**/*.scss',
-        img: 'assets/src/img/**/*.*',
-        svg: 'assets/src/img/icons/icon-*.svg',
-        fonts: 'assets/srs/fonts/**/*.*'
-    },
-    clean: './assets/build/*'
+  build: {
+    html: "assets/build/",
+    js: "assets/build/js/",
+    libsJs: "assets/build/js/",
+    css: "assets/build/css/",
+    img: "assets/build/img/",
+    svg: "assets/build/img/",
+    fonts: "assets/build/fonts/"
+  },
+  src: {
+    html: "assets/src/*.html",
+    js: "assets/src/js/main/main.js",
+    libsJs: "assets/src/js/libs.js",
+    style: "assets/src/style/main.scss",
+    img: "assets/src/img/**/*.*",
+    svg: "assets/src/img/icons/icon-*.svg",
+    fonts: "assets/src/fonts/**/*.*"
+  },
+  watch: {
+    html: "assets/src/**/*.html",
+    js: "assets/src/js/main/**/*.js",
+    libsJs: "assets/src/js/libs.js",
+    css: "assets/src/style/**/*.scss",
+    img: "assets/src/img/**/*.*",
+    svg: "assets/src/img/icons/icon-*.svg",
+    fonts: "assets/srs/fonts/**/*.*"
+  },
+  clean: "./assets/build/*"
 };
 
 /* настройки сервера */
@@ -49,7 +52,7 @@ var gulp = require('gulp'),  // подключаем Gulp
     uglify = require('gulp-uglify'), // модуль для минимизации JavaScript
     cache = require('gulp-cache'), // модуль для кэширования
     imagemin = require('gulp-imagemin'), // плагин для сжатия PNG, JPEG, GIF и SVG изображений
-    jpegrecompress = require('imagemin-jpeg-recompress'), // плагин для сжатия jpeg	
+    jpegrecompress = require('imagemin-jpeg-recompress'), // плагин для сжатия jpeg
     pngquant = require('imagemin-pngquant'), // плагин для сжатия png
     rimraf = require('gulp-rimraf'), // плагин для удаления файлов и каталогов
     svgstore = require("gulp-svgstore"),
@@ -99,6 +102,20 @@ gulp.task('js:build', function () {
         .pipe(gulp.dest(path.build.js)) // положим готовый файл
         .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
 });
+// сбор js libs
+gulp.task('libsJs:build', function () {
+    return gulp
+      .src(path.src.libsJs) // получим файл main.js
+      .pipe(plumber()) // для отслеживания ошибок
+      .pipe(rigger()) // импортируем все указанные файлы в main.js
+      .pipe(gulp.dest(path.build.libsJs))
+      .pipe(rename({ suffix: ".min" }))
+      .pipe(sourcemaps.init()) //инициализируем sourcemap
+      .pipe(uglify()) // минимизируем js
+      .pipe(sourcemaps.write("./")) //  записываем sourcemap
+      .pipe(gulp.dest(path.build.libsJs)) // положим готовый файл
+      .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
 
 // перенос шрифтов
 gulp.task('fonts:build', function () {
@@ -132,7 +149,7 @@ gulp.task("sprite:build", function () {
     .pipe(gulp.dest(path.build.svg));
 });
 
-// удаление каталога build 
+// удаление каталога build
 gulp.task('clean:build', function () {
     return gulp.src(path.clean, { read: false })
         .pipe(rimraf());
@@ -144,17 +161,20 @@ gulp.task('cache:clear', function () {
 });
 
 // сборка
-gulp.task('build',
-    gulp.series('clean:build',
-        gulp.parallel(
-            'html:build',
-            'css:build',
-            'js:build',
-            'fonts:build',
-            'image:build',
-            'sprite:build'
-        )
+gulp.task(
+  "build",
+  gulp.series(
+    "clean:build",
+    gulp.parallel(
+      "html:build",
+      "css:build",
+      "js:build",
+      "libsJs:build",
+      "fonts:build",
+      "image:build",
+      "sprite:build"
     )
+  )
 );
 
 // запуск задач при изменении файлов
@@ -170,5 +190,5 @@ gulp.task('watch', function () {
 // задача по умолчанию
 gulp.task('default', gulp.series(
     'build',
-    gulp.parallel('webserver','watch')      
+    gulp.parallel('webserver','watch')
 ));

@@ -1,5 +1,4 @@
-//= libs/picturefill.min.js
-//= libs/svg4everybody.min.js
+
 
 // Импортируем другие js-файлы
 //= iframes/content.js

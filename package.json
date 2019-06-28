@@ -13,7 +13,10 @@
     "IE 11",
     "Firefox ESR"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "picturefill": "^3.0.3",
+    "svg4everybody": "^2.1.9"
+  },
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "gulp": "^4.0.0",

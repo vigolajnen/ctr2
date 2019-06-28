@@ -58,7 +58,11 @@
     }
   });
 
+
+  console.log(event);
+
   window.addEventListener("message", function(evt) {
+
     if (evt.data.target == 1) {
       parent.document
         .querySelector(".bl-modal[data-index='1']")
@@ -115,5 +119,4 @@
       });
     });
   });
-
 })();
