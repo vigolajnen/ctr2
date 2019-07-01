@@ -1,43 +1,29 @@
 (function() {
-  var widgetButton = document.querySelector("span[data-index='6']");
-  if (widgetButton) {
-    widgetButton.addEventListener("click", function(evt) {
-      console.log(evt);
-      evt.preventDefault();
-      parent.postMessage(
-        {
-          source: 0,
-          type: "edit",
-          target: 6
-        },
-        "*"
-      );
-    });
-  }
 
-  if (document.querySelector("button[data-index='1']")) {
-    document
-      .querySelector("button[data-index='1']")
-      .addEventListener("click", function(evt) {
+  var widgetButtons = document.querySelectorAll("span[data-index='6']");
+  if (widgetButtons) {
+    widgetButtons.forEach(function(widgetButton) {
+      widgetButton.addEventListener("click", function(evt) {
         console.log(evt);
         evt.preventDefault();
-
         parent.postMessage(
           {
             source: 0,
-            type: "widget",
-            target: 1
+            type: "edit",
+            target: 6
           },
           "*"
         );
       });
-  } else if (document.querySelector("span[data-index='10']")) {
-    document
-      .querySelector("span[data-index='10']")
-      .addEventListener("click", function(evt) {
-        console.log(evt);
-        evt.preventDefault();
+    });
+  }
 
+  var widgetButtons2 = document.querySelectorAll("span[data-index='10']");
+  if (widgetButtons2) {
+    widgetButtons2.forEach(function(widgetButton) {
+      widgetButton.addEventListener("click", function(evt) {
+
+        evt.preventDefault();
         parent.postMessage(
           {
             source: 0,
@@ -47,5 +33,21 @@
           "*"
         );
       });
+    });
+  }
+
+  if (document.querySelector("button[data-index='1']")) {
+    document.querySelector("button[data-index='1']").addEventListener("click", function(evt) {
+      console.log(evt);
+      evt.preventDefault();
+      parent.postMessage(
+        {
+          source: 0,
+          type: "widget",
+          target: 1
+        },
+        "*"
+      );
+    });
   }
 })();

@@ -63,9 +63,16 @@ img {
 // footer к низу
 
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
+}
+
+.wrapper-place {
+  display: flex;
+  flex-direction: column;
+  height: auto;
 }
 
 .content {

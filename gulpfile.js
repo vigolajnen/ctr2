@@ -5,6 +5,9 @@ var path = {
   build: {
     html: "assets/build/",
     js: "assets/build/js/",
+    jsFrContent: "assets/build/js/",
+    jsFrCode: "assets/build/js/",
+    jsFrProperties: "assets/build/js/",
     libsJs: "assets/build/js/",
     css: "assets/build/css/",
     img: "assets/build/img/",
@@ -14,6 +17,9 @@ var path = {
   src: {
     html: "assets/src/*.html",
     js: "assets/src/js/main/main.js",
+    jsFrContent: "assets/src/js/iframes/content.js",
+    jsFrCode: "assets/src/js/iframes/code.js",
+    jsFrProperties: "assets/src/js/iframes/properties.js",
     libsJs: "assets/src/js/libs.js",
     style: "assets/src/style/main.scss",
     img: "assets/src/img/**/*.*",
@@ -23,6 +29,9 @@ var path = {
   watch: {
     html: "assets/src/**/*.html",
     js: "assets/src/js/main/**/*.js",
+    jsFrContent: "assets/src/js/iframes/content.js",
+    jsFrCode: "assets/src/js/iframes/code.js",
+    jsFrProperties: "assets/src/js/iframes/properties.js",
     libsJs: "assets/src/js/libs.js",
     css: "assets/src/style/**/*.scss",
     img: "assets/src/img/**/*.*",
@@ -114,6 +123,45 @@ gulp.task('libsJs:build', function () {
       .pipe(uglify()) // минимизируем js
       .pipe(sourcemaps.write("./")) //  записываем sourcemap
       .pipe(gulp.dest(path.build.libsJs)) // положим готовый файл
+      .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
+gulp.task("jsFrCode:build", function() {
+  return gulp
+    .src(path.src.jsFrCode) // получим файл main.js
+    .pipe(plumber()) // для отслеживания ошибок
+    .pipe(rigger()) // импортируем все указанные файлы в main.js
+    .pipe(gulp.dest(path.build.jsFrCode))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(sourcemaps.init()) //инициализируем sourcemap
+    .pipe(uglify()) // минимизируем js
+    .pipe(sourcemaps.write("./")) //  записываем sourcemap
+    .pipe(gulp.dest(path.build.jsFrCode)) // положим готовый файл
+    .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
+gulp.task('jsFrContent:build', function () {
+    return gulp
+      .src(path.src.jsFrContent) // получим файл main.js
+      .pipe(plumber()) // для отслеживания ошибок
+      .pipe(rigger()) // импортируем все указанные файлы в main.js
+      .pipe(gulp.dest(path.build.jsFrContent))
+      .pipe(rename({ suffix: ".min" }))
+      .pipe(sourcemaps.init()) //инициализируем sourcemap
+      .pipe(uglify()) // минимизируем js
+      .pipe(sourcemaps.write("./")) //  записываем sourcemap
+      .pipe(gulp.dest(path.build.jsFrContent)) // положим готовый файл
+      .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
+gulp.task('jsFrProperties:build', function () {
+    return gulp
+      .src(path.src.jsFrProperties) // получим файл main.js
+      .pipe(plumber()) // для отслеживания ошибок
+      .pipe(rigger()) // импортируем все указанные файлы в main.js
+      .pipe(gulp.dest(path.build.jsFrProperties))
+      .pipe(rename({ suffix: ".min" }))
+      .pipe(sourcemaps.init()) //инициализируем sourcemap
+      .pipe(uglify()) // минимизируем js
+      .pipe(sourcemaps.write("./")) //  записываем sourcemap
+      .pipe(gulp.dest(path.build.jsFrProperties)) // положим готовый файл
       .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
 });
 
