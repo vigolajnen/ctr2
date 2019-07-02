@@ -5,6 +5,7 @@
 
 
 //= tabs-2.js
+//= bl-widgets.js
 
 
 //= index.js

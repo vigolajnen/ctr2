@@ -1,6 +1,4 @@
 .bl-modal {
-  /* Скрываем окна  */
-  // opacity: 0;
 
   visibility: hidden;
 
@@ -15,10 +13,12 @@
 
 
   padding: 0;
-  // @include rem(padding-bottom, 40px);
+
   border-radius: 0;
-  // background-color: #ffffff;
+
   transition: 0.3s all;
+
+  overflow-anchor: auto;
 
   &[data-index="5"] {
     z-index: 36;
@@ -92,7 +92,7 @@
     flex-flow: column nowrap;
 
     width: 100%;
-    // @include rem(min-width, 1024px);
+
     height: calc(100vh - 50px);
 
     background-color: #ffffff;
@@ -143,7 +143,7 @@
       (
         1280px: 16px,
         1560px: 18px,
-        1800px: 25px
+        1800px: 22px
       )
     );
     color: $color-turquoise;
@@ -178,7 +178,7 @@
 }
 
 .active {
-  // opacity: 0;
+
   display: block;
 }
 

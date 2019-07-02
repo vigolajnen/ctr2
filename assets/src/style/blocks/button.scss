@@ -14,7 +14,7 @@
   transition: 1s;
 
   &--gray {
-    @include rem(padding, 5px 10px);
+    @include rem(padding, 5px);
 
     background: $color-gray;
     color: #ffffff;
@@ -23,12 +23,16 @@
     &:hover {
       background: darker($color-gray, 1.5);
     }
+
+    @include respond-above(lg) {
+      @include rem(padding, 5px 10px);
+    }
   }
   &--plus {
     background: transparent;
   }
   &--turquoise {
-    @include rem(padding, 5px 10px);
+    @include rem(padding, 5px);
     background: $color-turquoise;
 
     color: #ffffff;
@@ -36,6 +40,10 @@
     &:focus,
     &:hover {
       background: darker($color-turquoise, 1.5);
+    }
+
+    @include respond-above(lg) {
+      @include rem(padding, 5px 10px);
     }
   }
   &--white {

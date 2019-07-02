@@ -44,6 +44,7 @@
 
     @include respond-above(md) {
       flex-direction: row;
+      padding-right: .9375rem;
     }
 
     & .widget-preview {
@@ -70,7 +71,6 @@
     height: 100%;
     overflow-y: auto;
     padding-right: 10px;
-
   }
   &__item {
     display: flex;
@@ -90,6 +90,9 @@
       @include rem(padding, 15px 0);
     }
   }
+  &__group-item {
+    display: none;
+  }
   &__name {
     font-family: $font-base-medium;
     font-weight: 500;
@@ -108,6 +111,10 @@
   }
 }
 
+.bl-widgets__group-item.active {
+  display: block;
+}
+
 .bl-widgets__item .bl-widgets__icon {
   opacity: 0;
 }
@@ -117,6 +124,7 @@
 .bl-widgets__item:active .bl-widgets__name {
   color: #000000;
   cursor: pointer;
+  animation: name-show 1s forwards;
 }
 .bl-widgets__item:focus .bl-widgets__icon,
 .bl-widgets__item:hover .bl-widgets__icon,
@@ -142,5 +150,16 @@
   100% {
     opacity: 1;
     transform: translateX(0%);
+  }
+}
+@keyframes name-show {
+  0% {
+    opacity: 0.5;
+    transform: translateX(0%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(10%);
   }
 }
