@@ -36,18 +36,37 @@
     });
   }
 
-  if (document.querySelector("button[data-index='1']")) {
-    document.querySelector("button[data-index='1']").addEventListener("click", function(evt) {
-      console.log(evt);
-      evt.preventDefault();
-      parent.postMessage(
-        {
-          source: 0,
-          type: "widget",
-          target: 1
-        },
-        "*"
-      );
-    });
-  }
+    var widgetButtons3 = document.querySelectorAll(
+      "button[data-index='1']"
+    );
+    if (widgetButtons3) {
+      widgetButtons3.forEach(function(widgetButton) {
+        widgetButton.addEventListener("click", function(evt) {
+          evt.preventDefault();
+          parent.postMessage(
+            {
+              source: 0,
+              type: "widget",
+              target: 1
+            },
+            "*"
+          );
+        });
+      });
+    }
+
+  // if (document.querySelector("button[data-index='1']")) {
+  //   document.querySelector("button[data-index='1']").addEventListener("click", function(evt) {
+  //     console.log(evt);
+  //     evt.preventDefault();
+  //     parent.postMessage(
+  //       {
+  //         source: 0,
+  //         type: "widget",
+  //         target: 1
+  //       },
+  //       "*"
+  //     );
+  //   });
+  // }
 })();
