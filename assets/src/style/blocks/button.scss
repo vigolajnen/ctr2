@@ -13,6 +13,11 @@
 
   transition: 1s;
 
+  &:focus,
+  &:hover {
+    outline: 0;
+  }
+
   &--gray {
     @include rem(padding, 5px);
 
