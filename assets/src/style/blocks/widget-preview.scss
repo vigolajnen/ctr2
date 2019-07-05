@@ -29,4 +29,9 @@
       object-fit: cover;
     }
   }
+  &__desc {
+    padding: .625rem;
+    font-size: 80%;
+    line-height: normal;
+  }
 }
