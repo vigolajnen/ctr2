@@ -1,9 +1,19 @@
 .block-w {
   position: relative;
-  height: calc(100vh - 200px);
+  // height: calc(100vh - 200px);
+  min-height: 6.25rem;
   overflow: hidden;
   background-color: #ffffff;
-
+  &::after {
+    position: absolute;
+    z-index: 1;
+    content: "";
+    bottom: 0.125rem;
+    left: 0;
+    width: 100%;
+    height: 0.0625rem;
+    border-bottom: 1px dashed #dddddd;
+  }
 
   & .container-fluid {
     opacity: 1;
