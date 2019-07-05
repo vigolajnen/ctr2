@@ -2,3 +2,22 @@
   // background: rgba(0,0,0,0.3);
   height: calc(100vh - 55px);
 }
+
+.t-page-link {
+  position: fixed;
+  z-index: 31;
+  bottom: 3.4rem;
+  right: 1.1rem;
+  width: 100%;
+  min-height: 1.125rem;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  text-align: right;
+  font-size: 80%;
+  font-weight: 600;
+  & a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+}
