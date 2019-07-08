@@ -22,6 +22,7 @@ var path = {
     jsFrProperties: "assets/src/js/iframes/properties.js",
     libsJs: "assets/src/js/libs.js",
     style: "assets/src/style/main.scss",
+    style2: "assets/src/style/button.scss",
     img: "assets/src/img/**/*.*",
     svg: "assets/src/img/icons/icon-*.svg",
     fonts: "assets/src/fonts/**/*.*"
@@ -96,6 +97,21 @@ gulp.task('css:build', function () {
         .pipe(sourcemaps.write('./')) // записываем sourcemap
         .pipe(gulp.dest(path.build.css)) // выгружаем в build
         .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
+
+gulp.task("css2:build", function() {
+  return gulp
+    .src(path.src.style2) // получим button.scss
+    .pipe(plumber()) // для отслеживания ошибок
+    .pipe(sourcemaps.init()) // инициализируем sourcemap
+    .pipe(sass()) // scss -> css
+    .pipe(autoprefixer())
+    .pipe(gulp.dest(path.build.css))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(cleanCSS()) // минимизируем CSS
+    .pipe(sourcemaps.write("./")) // записываем sourcemap
+    .pipe(gulp.dest(path.build.css)) // выгружаем в build
+    .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
 });
 
 // сбор js
@@ -216,6 +232,7 @@ gulp.task(
     gulp.parallel(
       "html:build",
       "css:build",
+      "css2:build",
       "js:build",
       "libsJs:build",
       "fonts:build",
@@ -229,6 +246,7 @@ gulp.task(
 gulp.task('watch', function () {
     gulp.watch(path.watch.html, gulp.series('html:build'));
     gulp.watch(path.watch.css, gulp.series('css:build'));
+    gulp.watch(path.watch.css, gulp.series('css2:build'));
     gulp.watch(path.watch.js, gulp.series('js:build'));
     gulp.watch(path.watch.img, gulp.series('image:build'));
     gulp.watch(path.watch.img, gulp.series('sprite:build'));
