@@ -1,0 +1,15 @@
+.block-name {
+  position: absolute;
+  top: .625rem;
+  left: .625rem;
+  max-width: 12.5rem;
+  background-color: rgba(0,0,0,0.7);
+  padding: 5px 10px;
+  font-size: 75%;
+  color: #ffffff;
+  border-radius: 5px;
+  opacity: 0;
+  &__text {
+    margin-right: .3125rem;
+  }
+}

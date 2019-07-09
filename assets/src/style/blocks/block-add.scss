@@ -1,14 +1,15 @@
 .block-add {
-  position: relative;
-  z-index: 32;
+  position: absolute;
+  z-index: 3200;
   bottom: -23px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: -50px;
 
-  // opacity: 0;
+  margin-top: 0;
+
+  opacity: 0;
   transition: opacity 0.4s ease-out;
 
   &--center {

@@ -67,6 +67,9 @@ img {
   display: flex;
   flex-direction: column;
   height: auto;
+  &--mb-50 {
+    margin-bottom: 50px;
+  }
 }
 
 .wrapper-place {
