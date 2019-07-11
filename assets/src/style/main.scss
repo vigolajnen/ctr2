@@ -1,5 +1,5 @@
 
-@import "libs";
+// @import "libs";
 @import "variables";
 @import "mixins";
 @import "utils";
@@ -10,12 +10,13 @@
 // Подключение своих SCSS файлов
 @import "blocks/bg-image";
 @import "blocks/bl-edit-form";
+@import "blocks/bl-form";
 @import "blocks/bl-gallery";
 @import "blocks/bl-modal";
 @import "blocks/bl-text";
 @import "blocks/bl-widgets";
 
-@import "blocks/block-w";
+
 @import "blocks/box-pic-preview";
 @import "blocks/component-bg";
 @import "blocks/compotent-bl-text";
@@ -34,7 +35,7 @@
 @import "blocks/page-header";
 @import "blocks/page-footer";
 @import "blocks/page";
-@import "blocks/popup";
+// @import "blocks/popup";
 @import "blocks/subtabs";
 @import "blocks/tabs";
 @import "blocks/title";

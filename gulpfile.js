@@ -22,7 +22,10 @@ var path = {
     jsFrProperties: "assets/src/js/iframes/properties.js",
     libsJs: "assets/src/js/libs.js",
     style: "assets/src/style/main.scss",
-    style2: "assets/src/style/button.scss",
+    style2: "assets/src/style/content.scss",
+    style3: "assets/src/style/code.scss",
+    style4: "assets/src/style/properties.scss",
+    libs: "assets/src/style/libs.scss",
     img: "assets/src/img/**/*.*",
     svg: "assets/src/img/icons/icon-*.svg",
     fonts: "assets/src/fonts/**/*.*"
@@ -101,7 +104,49 @@ gulp.task('css:build', function () {
 
 gulp.task("css2:build", function() {
   return gulp
-    .src(path.src.style2) // получим button.scss
+    .src(path.src.style2) // получим content.scss
+    .pipe(plumber()) // для отслеживания ошибок
+    .pipe(sourcemaps.init()) // инициализируем sourcemap
+    .pipe(sass()) // scss -> css
+    .pipe(autoprefixer())
+    .pipe(gulp.dest(path.build.css))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(cleanCSS()) // минимизируем CSS
+    .pipe(sourcemaps.write("./")) // записываем sourcemap
+    .pipe(gulp.dest(path.build.css)) // выгружаем в build
+    .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
+gulp.task("css3:build", function() {
+  return gulp
+    .src(path.src.style3) // получим code.scss
+    .pipe(plumber()) // для отслеживания ошибок
+    .pipe(sourcemaps.init()) // инициализируем sourcemap
+    .pipe(sass()) // scss -> css
+    .pipe(autoprefixer())
+    .pipe(gulp.dest(path.build.css))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(cleanCSS()) // минимизируем CSS
+    .pipe(sourcemaps.write("./")) // записываем sourcemap
+    .pipe(gulp.dest(path.build.css)) // выгружаем в build
+    .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
+gulp.task("css4:build", function() {
+  return gulp
+    .src(path.src.style4) // получим properties.scss
+    .pipe(plumber()) // для отслеживания ошибок
+    .pipe(sourcemaps.init()) // инициализируем sourcemap
+    .pipe(sass()) // scss -> css
+    .pipe(autoprefixer())
+    .pipe(gulp.dest(path.build.css))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(cleanCSS()) // минимизируем CSS
+    .pipe(sourcemaps.write("./")) // записываем sourcemap
+    .pipe(gulp.dest(path.build.css)) // выгружаем в build
+    .pipe(webserver.reload({ stream: true })); // перезагрузим сервер
+});
+gulp.task("libs:build", function() {
+  return gulp
+    .src(path.src.libs) // получим libs.scss
     .pipe(plumber()) // для отслеживания ошибок
     .pipe(sourcemaps.init()) // инициализируем sourcemap
     .pipe(sass()) // scss -> css
@@ -233,6 +278,9 @@ gulp.task(
       "html:build",
       "css:build",
       "css2:build",
+      "css3:build",
+      "css4:build",
+      "libs:build",
       "js:build",
       "libsJs:build",
       "fonts:build",
@@ -247,6 +295,9 @@ gulp.task('watch', function () {
     gulp.watch(path.watch.html, gulp.series('html:build'));
     gulp.watch(path.watch.css, gulp.series('css:build'));
     gulp.watch(path.watch.css, gulp.series('css2:build'));
+    gulp.watch(path.watch.css, gulp.series('css3:build'));
+    gulp.watch(path.watch.css, gulp.series('css4:build'));
+    gulp.watch(path.watch.css, gulp.series('libs:build'));
     gulp.watch(path.watch.js, gulp.series('js:build'));
     gulp.watch(path.watch.img, gulp.series('image:build'));
     gulp.watch(path.watch.img, gulp.series('sprite:build'));

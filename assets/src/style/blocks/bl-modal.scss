@@ -1,5 +1,4 @@
 .bl-modal {
-
   visibility: hidden;
 
   display: none;
@@ -10,7 +9,6 @@
 
   top: 0;
   left: 0;
-
 
   padding: 0;
 
@@ -54,32 +52,32 @@
 
   &__wrap {
     &--xs {
-    max-width: 700px;
-    width: 100%;
+      max-width: 700px;
+      width: 100%;
 
-    animation-name: slideRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-    visibility: visible;
+      animation-name: slideRight;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      visibility: visible;
 
-    @include respond-above(md) {
-      width: 40%;
+      @include respond-above(md) {
+        width: 40%;
+      }
     }
-  }
 
-  &--sm {
-    max-width: 1000px;
-    width: 100%;
+    &--sm {
+      max-width: 1000px;
+      width: 100%;
 
-    animation-name: slideRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-    visibility: visible;
+      animation-name: slideRight;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      visibility: visible;
 
-    @include respond-above(md) {
-      width: 70%;
+      @include respond-above(md) {
+        width: 70%;
+      }
     }
-  }
   }
 
   &__overlay {
@@ -124,6 +122,11 @@
 
     @include respond-above(xxlg) {
       height: calc(100% - 115px);
+    }
+    &--flex {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     &--no-pg {
       padding: 0;
@@ -178,11 +181,8 @@
 }
 
 .active {
-
   display: block;
 }
-
-
 
 .overlay {
   /* Скрываем подложку  */
@@ -203,7 +203,6 @@
 
 .bl-modal.active,
 .overlay.active {
-
   opacity: 1;
   visibility: visible;
 }
@@ -218,7 +217,6 @@
   animation-timing-function: ease-in-out;
 }
 
-
 .bl-modal.anim-hover.active {
   display: block;
 
@@ -226,13 +224,11 @@
   animation-fill-mode: forwards;
   animation-delay: 0s;
   transition: 1s;
-
 }
 
 .bl-modal__body.bl-modal__body--height {
   height: calc(100vh - 50px);
 }
-
 
 @keyframes show {
   0% {
