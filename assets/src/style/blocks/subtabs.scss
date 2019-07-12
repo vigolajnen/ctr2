@@ -3,7 +3,7 @@
   flex-direction: column;
   max-width: 100%;
   height: 100%;
-  margin-top: -25px;
+  // margin-top: -25px;
 
   overflow: hidden;
 
@@ -77,13 +77,15 @@
     height: 100%;
     width: 100%;
 
+
     @include rem(
       (
-        padding: 25px 15px,
+        padding: 0,
         border-radius: 0 4px 4px 4px
       )
     );
     background: #ffffff;
+     overflow: hidden;
 
     &.scroll-content {
       height: 100%;
@@ -92,12 +94,7 @@
   }
   &__content-inner {
     height: 100%;
-    @include rem(padding-bottom, 70px);
-
-    & iframe {
-      width: 100%;
-      height: 100%;
-    }
+        overflow: auto;
   }
 
   &__btn-box {
@@ -123,6 +120,8 @@
 
 .subtabs__panel.active {
   display: block;
+  overflow: auto;
+  height: 100%;
 }
 
 .subtabs__panel p + div {

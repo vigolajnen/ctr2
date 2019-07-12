@@ -1,0 +1,26 @@
+@font-face {
+  font-family: $OpenSans;
+  font-display: auto;
+  src: url("../fonts/opensans.woff2") format("woff2"),
+    url("../fonts/opensans.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $Robotolight;
+  font-display: auto;
+  src: url("../fonts/Robotolight.woff2") format("woff2"),
+    url("../fonts/Robotolight.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $Robotomedium;
+  font-display: auto;
+  src: url("../fonts/Robotomedium.woff2") format("woff2"),
+    url("../fonts/Robotomedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
