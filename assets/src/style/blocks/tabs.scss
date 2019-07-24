@@ -34,9 +34,15 @@
     @include rem(padding-right, 10px);
 
     white-space: nowrap;
+    pointer-events: all;
+    cursor: pointer;
 
     &:last-child {
       padding-right: 0;
+    }
+
+    * {
+      pointer-events: none;
     }
   }
   &__link {
