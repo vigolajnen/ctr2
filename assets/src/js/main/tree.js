@@ -11,19 +11,19 @@
 
     function toggleNode(node) {
       // определить новый класс для узла
-      var newClass = hasClass(node, "ExpandOpen")
-        ? "ExpandClosed"
-        : "ExpandOpen";
+      var newClass = hasClass(node, "expand-open")
+        ? "expand-closed"
+        : "expand-open";
       // заменить текущий класс на newClass
       // регексп находит отдельно стоящий open|close и меняет на newClass
-      var re = /(^|\s)(ExpandOpen|ExpandClosed)(\s|$)/;
+      var re = /(^|\s)(expand-open|expand-closed)(\s|$)/;
       node.className = node.className.replace(re, "$1" + newClass + "$3");
     }
 
     function load(node) {
       function showLoading(on) {
         var expand = node.getElementsByTagName("DIV")[0];
-        expand.className = on ? "ExpandLoading" : "Expand";
+        expand.className = on ? "expand-loading" : "expand";
       }
 
       function onSuccess(data) {
@@ -92,7 +92,7 @@
               '" src="/cms/img/module_str_icon.gif">';
 
           li.className =
-            "Node Expand" + (parseInt(child.isFolder) ? "Closed" : "Leaf");
+            "Node expand" + (parseInt(child.isFolder) ? "Closed" : "Leaf");
           if (i == data.length - 1) li.className += " IsLast";
 
           var title_text = child.title;
@@ -129,7 +129,7 @@
             // Низя удалять "служебные"
             if (levels.indexOf("/s/") == -1 && levels != "/s") {
               str +=
-                '<a href="#" class="btn btn-xs btn-outline red-pink" onclick="if (confirm(\'Вы действительно хотите удалить страницу &laquo;' +
+                '<a href="#" class="btn" onclick="if (confirm(\'Вы действительно хотите удалить страницу &laquo;' +
                 child.title.replace("'", "\\'") +
                 "&raquo;?')) { f=document.getElementById('del'); f.id.value='" +
                 child.id +
@@ -153,9 +153,9 @@
           str += "		</div>";
 
           li.innerHTML =
-            '<div class="Expand"></div><div class="Content">' + str + "</div>";
+            '<div class="expand"></div><div class="tree__inner">' + str + "</div>";
           if (parseInt(child.isFolder)) {
-            li.innerHTML += '<ul class="Container"></ul>';
+            li.innerHTML += '<ul class="tree__list"></ul>';
           }
 
           var img = document.createElement("IMG");
@@ -219,13 +219,13 @@
       event = event || window.event;
       var clickedElem = event.target || event.srcElement;
 
-      if (!hasClass(clickedElem, "Expand")) {
+      if (!hasClass(clickedElem, "expand")) {
         return; // клик не там
       }
 
       // Node, на который кликнули
       var node = clickedElem.parentNode;
-      if (hasClass(node, "ExpandLeaf")) {
+      if (hasClass(node, "expand-leaf")) {
         return; // клик на листе
       }
 

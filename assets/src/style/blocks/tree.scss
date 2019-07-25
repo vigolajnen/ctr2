@@ -3,9 +3,14 @@
   & ul {
     @include listReset();
   }
+  &__title {
+      line-height: normal;
+      font-weight: 600;
+    color: darken($color-turquoise, 6%);
+  }
   &__icon-add {
     width: 15px;
-    height: 20px;
+    height: 30px;
     fill: $color-turquoise;
   }
   &__icon-del {
@@ -28,77 +33,57 @@
   & .btn {
     padding: 0;
   }
-}
 
-/* indent for all tree children excepts root */
-.Node {
-  background-image: url(../img/i.gif);
-  background-position: top left;
-  background-repeat: repeat-y;
-  margin-left: 18px;
-  zoom: 1;
-}
+  & .expand {
+    width: 35px;
+    height: 18px;
+    float: left;
+  }
 
-.IsRoot {
-  margin-left: 0;
-}
+  & .expand-open {
+    & .expand {
+      background-image: url(../img/expand_minus.gif);
+      cursor: pointer;
+    }
 
-/* left vertical line (grid) for all nodes */
-.IsLast {
-  background-image: url(../img/i_half.gif);
-  background-repeat: no-repeat;
-}
+    & .tree__list {
+      display: block;
+    }
+  }
 
-.ExpandOpen .Expand {
-  background-image: url(../img/expand_minus.gif);
-}
+  & .expand-closed {
+    & .expand {
+      background-image: url(../img/expandable.gif);
+      cursor: pointer;
+    }
 
-/* closed is higher priority than open */
-.ExpandClosed .Expand {
-  /* background-image: url(img/expand_plus.gif);
-	  */
-  background-image: url(../img/expandable.gif);
-}
+    & .tree__list {
+      display: none;
+    }
+  }
 
-/* highest priority */
-.ExpandLeaf .Expand {
-  background-image: url(../img/expand_leaf.gif);
-}
+  & .expand-leaf .expand {
+    background-image: url(../img/expand_leaf.gif);
+    cursor: auto;
+  }
 
-.Content {
-  min-height: 18px;
-  margin-left: 18px;
-}
+  & .expand-loading {
+    width: 18px;
+    height: 18px;
+    float: left;
+    background-image: url(../img/expand_loading.gif);
+  }
 
-* html .Content {
-  height: 18px;
-}
+  & .node {
+    background-image: url(../img/i.gif);
+    background-position: top left;
+    background-repeat: repeat-y;
+    margin-left: 18px;
+    zoom: 1;
+  }
 
-.Expand {
-  width: 35px;
-  height: 18px;
-  float: left;
-}
-
-.ExpandOpen .Container {
-  display: block;
-}
-
-.ExpandClosed .Container {
-  display: none;
-}
-
-.ExpandOpen .Expand,
-.ExpandClosed .Expand {
-  cursor: pointer;
-}
-.ExpandLeaf .Expand {
-  cursor: auto;
-}
-
-.ExpandLoading {
-  width: 18px;
-  height: 18px;
-  float: left;
-  background-image: url(../img/expand_loading.gif);
+  & .isLast {
+    background-image: url(../img/i_half.gif);
+    background-repeat: no-repeat;
+  }
 }
