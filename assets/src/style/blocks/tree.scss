@@ -1,11 +1,12 @@
 .tree {
+  height: 100%;
   @include listReset();
   & ul {
     @include listReset();
   }
   &__title {
-      line-height: normal;
-      font-weight: 600;
+    line-height: normal;
+    font-weight: 600;
     color: darken($color-turquoise, 6%);
   }
   &__icon-add {
@@ -86,4 +87,9 @@
     background-image: url(../img/i_half.gif);
     background-repeat: no-repeat;
   }
+}
+
+.tree-wrapper {
+  height: calc(100% - 100px);
+  overflow-y: auto;
 }

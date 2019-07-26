@@ -36,12 +36,14 @@
     }
   }
   &__icon {
+    width: 45px;
+    height: 45px;
     fill: $color-turquoise;
-    @include rem(
-      (
-        width: 45px,
-        height: 45px
-      )
-    );
+    // @include rem(
+    //   (
+    //     width: 45px,
+    //     height: 45px
+    //   )
+    // );
   }
 }
