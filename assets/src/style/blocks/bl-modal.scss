@@ -146,7 +146,7 @@
       (
         1280px: 16px,
         1560px: 18px,
-        1800px: 22px
+        1800px: 20px
       )
     );
     color: $color-turquoise;
@@ -164,12 +164,14 @@
   }
   &__icon {
     @include respond-above(xxlg) {
-      @include rem(
-        (
-          width: 30px,
-          height: 30px
-        )
-      );
+      // @include rem(
+      //   (
+      //     width: 30px,
+      //     height: 30px
+      //   )
+      // );
+      width: 20px;
+      height: 20px;
     }
   }
   &__btn-box {

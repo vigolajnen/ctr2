@@ -37,14 +37,14 @@
   &__inner {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-direction: column;
 
     @include rem(padding-top, 5px);
 
     @include respond-above(md) {
       flex-direction: row;
-      padding-right: .9375rem;
+      padding-right: 0.9375rem;
     }
 
     & .widget-preview {
@@ -59,10 +59,14 @@
 
       @include respond-above(md) {
         width: 45%;
+        margin-right: calc(10% / 4);
+        margin-left: calc(10% / 4);
       }
 
       @include respond-above(xxlg) {
         width: 30%;
+        margin-right: calc(10% / 6);
+        margin-left: calc(10% / 6);
       }
     }
   }
@@ -87,7 +91,7 @@
     cursor: pointer;
 
     @include respond-above(xxlg) {
-      @include rem(padding, 15px 0);
+      @include rem(padding, 10px 0);
     }
   }
   &__group-item {
@@ -101,7 +105,7 @@
       (
         1280px: 16px,
         1560px: 18px,
-        1800px: 22px
+        1800px: 20px
       )
     );
     color: #6a6a6a;
