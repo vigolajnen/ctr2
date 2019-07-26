@@ -1,14 +1,16 @@
 (function() {
-  var nodes = document.querySelectorAll('.node');
-  nodes.forEach(function(node){
-    node.addEventListener('click', function(evt) {
+  var items = document.querySelectorAll(".expand");
+  items.forEach(function(item) {
+    item.addEventListener("click", function(evt) {
       evt.preventDefault();
-      if (node.classList.contains("expand-open")) {
-        node.classList.remove("expand-open");
-        node.classList.add("expand-closed");
-      } else if (node.classList.contains("expand-close")) {
-        node.classList.add("expand-open");
-        node.classList.remove("expand-closed");
+      var parent = item.parentElement;
+      console.log(parent);
+      if (parent.classList.contains("expand-closed")) {
+        parent.classList.remove("expand-closed");
+        parent.classList.add("expand-open");
+      } else if (parent.classList.contains("expand-open")) {
+        parent.classList.remove("expand-open");
+        parent.classList.add("expand-closed");
       }
     });
   });
