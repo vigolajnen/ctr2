@@ -15,3 +15,4 @@
 //= iframes/properties.js
 //= controls.js
 //= tree-2.js
+//= inputfile.js
