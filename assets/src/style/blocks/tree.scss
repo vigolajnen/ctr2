@@ -5,19 +5,23 @@
     @include listReset();
   }
   &__title {
+    padding-left: 5px;
     line-height: normal;
     font-weight: 600;
     color: darken($color-turquoise, 6%);
   }
   &__icon-add {
     width: 15px;
-    height: 30px;
+    height: 20px;
     fill: $color-turquoise;
   }
   &__icon-del {
+    position: relative;
+    top: 9px;
+    left: 6px;
     width: 20px;
     height: 20px;
-    margin-top: 5px;
+    // margin-top: 5px;
     fill: $color-danger;
   }
   & a {
@@ -32,19 +36,21 @@
     }
   }
   & .btn {
+    position: relative;
     padding: 0;
   }
 
-  & .expand {
+  & .Expand {
     width: 35px;
     height: 18px;
     float: left;
   }
 
   & .expand-open {
-    & .expand {
+    & .Expand {
       background-image: url(../img/expand_minus.gif);
       cursor: pointer;
+      font-size: 0;
     }
 
     & .tree__list {
@@ -52,8 +58,8 @@
     }
   }
 
-  & .expand-closed {
-    & .expand {
+  & .ExpandClosed {
+    & .Expand {
       background-image: url(../img/expandable.gif);
       cursor: pointer;
     }
@@ -63,19 +69,20 @@
     }
   }
 
-  & .expand-leaf .expand {
+  & .ExpandLeaf .Expand {
     background-image: url(../img/expand_leaf.gif);
     cursor: auto;
+    font-size: 0;
   }
 
-  & .expand-loading {
+  & .ExpandLoading {
     width: 18px;
     height: 18px;
     float: left;
     background-image: url(../img/expand_loading.gif);
   }
 
-  & .node {
+  & .Node {
     background-image: url(../img/i.gif);
     background-position: top left;
     background-repeat: repeat-y;
@@ -92,4 +99,13 @@
 .tree-wrapper {
   height: calc(100% - 100px);
   overflow-y: auto;
+}
+
+.tree__inner a {
+  text-decoration: none;
+}
+
+.tree__inner div {
+  display: flex;
+  align-items: flex-end;
 }
