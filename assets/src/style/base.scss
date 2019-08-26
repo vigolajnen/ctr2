@@ -168,3 +168,11 @@ img {
   font-size: 85%;
   border-bottom: 1px solid #dddddd;
 }
+
+.bl-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 12rem;
+}
