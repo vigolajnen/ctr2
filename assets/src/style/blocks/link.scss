@@ -20,4 +20,16 @@
       background: darker($color-turquoise, 1.5);
     }
   }
+  &--btn-del {
+    padding: 10px 15px;
+    font-size: 13px;
+    color: #fff;
+    background-color: #b51f1f;
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+      background-color: darker(#b51f1f, 1.5);
+    }
+  }
 }
