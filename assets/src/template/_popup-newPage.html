@@ -1,0 +1,37 @@
+<div class="overlay js-overlay">
+  <div class="bl-modal bl-modal--xs w-edit w-close" data-index="21">
+    <div class="bl-modal__header">
+      <div class="bl-modal__title">
+        <svg class="bl-modal__title-icon" width="15" height="15">
+          <use xlink:href="img/sprite.svg#icon-layers"></use>
+        </svg>
+        <span>Новая страница</span>
+      </div>
+      <button class="button bl-modal__close js-btn-close" aria-label="Закрыть">
+        <svg class="bl-modal__icon" width="15" height="15">
+          <use xlink:href="img/sprite.svg#icon-close"></use>
+        </svg>
+      </button>
+    </div>
+
+    <div class="bl-modal__body bl-modal__body--flex">
+
+      <div class="bl-form bl-form--radio">
+        <div class="bl-form__item">
+          <input id="tmp-1" name="tmp" type="radio" class="bl-form__val visually-hidden">
+          <label for="tmp-1" class="bl-form__label">Наследовать шаблон родительской страницы</label>
+        </div>
+        <div class="bl-form__item">
+          <input id="tmp-2" name="tmp" type="radio" class="bl-form__val visually-hidden">
+          <label for="tmp-2" class="bl-form__label">Копировать шаблон родительской страницы</label>
+        </div>
+        <div class="bl-form__item">
+          <input id="tmp-3" name="tmp" type="radio" class="bl-form__val visually-hidden">
+          <label for="tmp-3" class="bl-form__label">Создать новый шаблон</label>
+        </div>
+        <button id="btn-newPage" class="button button--turquoise" type="submit">Далее</button>
+      </div>
+    </div>
+
+  </div>
+</div>

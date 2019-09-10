@@ -109,4 +109,37 @@
         .classList.add("active");
     }
   });
+
+  var btnAddPages = document.querySelectorAll(".tree__icon-add");
+  var btnOpenPage = document.querySelector("#btn-newPage");
+  if (btnAddPages) {
+    btnAddPages.forEach(function(btnAdd) {
+      btnAdd.addEventListener('click', function(evt){
+        evt.preventDefault();
+        console.log("page");
+
+        var closeWindow = document.querySelector(".w-edit[data-index='4']");
+        closeWindow.parentElement.classList.remove("active");
+        closeWindow.classList.remove("active");
+
+        var openWindow = document.querySelector(".w-edit[data-index='21']");
+        openWindow.parentElement.classList.add("active");
+        openWindow.classList.add("active");
+      })
+    });
+  }
+  if (btnOpenPage) {
+    btnOpenPage.addEventListener("click", function(evt) {
+      evt.preventDefault();
+      console.log("page");
+
+      var closeWindow = document.querySelector(".w-edit[data-index='21']");
+      closeWindow.parentElement.classList.remove("active");
+      closeWindow.classList.remove("active");
+
+      var openWindow = document.querySelector(".w-edit[data-index='22']");
+      openWindow.parentElement.classList.add("active");
+      openWindow.classList.add("active");
+    });
+  }
 })();

@@ -2,6 +2,82 @@
   display: flex;
   width: 100%;
   margin-top: 1.25rem;
+
+  &--radio {
+    flex-wrap: wrap;
+
+    & .bl-form__item {
+      margin-bottom: 1rem;
+    }
+
+    & .bl-form__label {
+      position: relative;
+      display: block;
+      padding-top: 5px;
+      padding-left: 45px;
+      font-size: 17px;
+      line-height: 18px;
+      font-weight: 700;
+      color: #737373;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        background: #ebebeb;
+        border-radius: 50%;
+        border: 2px solid transparent;
+      }
+
+      &:hover::after {
+        border-color: #8a8a8a;
+      }
+
+      &:focus::after {
+        border-color: #c7c7c7;
+      }
+    }
+
+    & .bl-form__val:checked + .bl-form__label::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      left: 10px;
+      width: 10px;
+      height: 10px;
+      background: #8a8a8a;
+      border-radius: 50%;
+    }
+
+    & .button {
+      margin-left: auto;
+    }
+  }
+  &--full {
+    flex-wrap: wrap;
+
+    & .bl-form__item {
+      margin-bottom: 1.25rem;
+    }
+
+    & .bl-form__val {
+      font-weight: 400;
+
+      &::placeholder {
+        font-weight: 400;
+      }
+    }
+
+    & .button {
+      margin-left: auto;
+    }
+  }
   &__item {
     display: flex;
     flex-direction: column;
