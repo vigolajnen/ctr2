@@ -135,6 +135,10 @@
     &.scroll-content {
       overflow-y: auto;
     }
+
+    & .tabs {
+      height: calc(100% - 40px);
+    }
   }
   &__title {
     display: flex;
