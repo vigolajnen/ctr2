@@ -101,6 +101,7 @@
     &.scroll-content {
       height: 100%;
       overflow-y: auto;
+
     }
   }
   &__content-inner {
@@ -219,4 +220,17 @@
 
 .tabs .CodeMirror-scroll {
   overflow: auto !important;
+  width: 100%;
+}
+// .tabs .CodeMirror-hscrollbar {
+//   overflow: hidden;
+// }
+
+.tabs .CodeMirror {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
