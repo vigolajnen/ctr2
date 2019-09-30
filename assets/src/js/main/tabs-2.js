@@ -19,12 +19,12 @@
 // })();
 
 
-(function() {
+(function () {
   var items = document.querySelectorAll(".tabs__item");
   var contents = document.querySelectorAll(".tabs__panel");
 
-  items.forEach(function(item) {
-    item.addEventListener("click", function(evt) {
+  items.forEach(function (item) {
+    item.addEventListener("click", function (evt) {
       evt.preventDefault();
 
       for (var i = 0; i < items.length; i++) {
@@ -49,14 +49,16 @@
   });
 
   var jsTriggersSub = document.querySelectorAll(".js-subtab-trigger");
-  jsTriggersSub.forEach(function(trigger) {
-    trigger.addEventListener("click", function() {
+  jsTriggersSub.forEach(function (trigger) {
+    trigger.addEventListener("click", function () {
       var id = this.getAttribute("data-subtab"),
         content = document.querySelector(
           '.js-subtab-content[data-subtab="' + id + '"]'
         ),
-        activeTrigger = document.querySelector(".js-subtab-trigger.active"),
-        activeContent = document.querySelector(".js-subtab-content.active");
+        activeTab = document.querySelector(".js-tab-content.active"),
+        activeTrigger = activeTab.querySelector(".js-subtab-trigger.active"),
+        activeContent = activeTab.querySelector(".js-subtab-content.active");
+
 
       activeTrigger.classList.remove("active");
       trigger.classList.add("active");
