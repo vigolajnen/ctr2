@@ -3,7 +3,180 @@
 @import "mixins";
 @import "utils";
 @import "fonts";
-@import "base";
+
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// footer к низу
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  &--mb-50 {
+    margin-bottom: 50px;
+  }
+}
+
+.wrapper-place {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.content {
+  flex: 1 0 auto;
+  margin-bottom: 70px;
+
+  @media (min-width: 600px) {
+    margin-bottom: 100px;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
+}
+
+.page-footer {
+  flex: 0 0 auto;
+}
+
+.overlay {
+  overflow: hidden;
+}
+
+.scroll-content {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.js-iframe {
+  display: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 35;
+}
+
+.js-iframe.active {
+  display: block;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 35;
+  visibility: visible;
+}
+
+.js-iframe.anim-hover.active {
+  animation: show 0s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+  transition: 1s;
+}
+
+.js-iframe.bl-iframe {
+  display: block;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background: #ffffff;
+  visibility: visible;
+}
+
+.pulse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  color: gray;
+  background: white;
+  border-radius: 50%;
+  animation: radial-pulse 1.5s infinite;
+  -webkit-animation: radial-pulse 1.5s infinite;
+}
+
+@keyframes radial-pulse {
+  0% {
+    box-shadow: 0 0 0 0px $color-turquoise;
+  }
+
+  100% {
+    box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+  }
+}
+
+.wrapper-xs {
+  width: 320px;
+  min-width: 320px;
+  margin: 0 auto;
+
+  background-color: #ffffff;
+}
+
+.wrapper-sm {
+  width: 768px;
+  min-width: 768px;
+  margin: 0 auto;
+
+  background-color: #ffffff;
+}
+
+.box-edit {
+  display: none;
+}
+
+.tmp-name {
+  display: block;
+  padding: 5px 10px;
+  font-size: 85%;
+  border-bottom: 1px solid #dddddd;
+}
+
+.bl-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 12rem;
+}
+
 
 // @import "blocks/container-list";
 @import "blocks/button";
