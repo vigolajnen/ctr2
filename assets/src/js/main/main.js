@@ -1,6 +1,11 @@
 
 "use strict";
 
+if (window.navigator.appMinorVersion) {
+  document.write("Ваш гавнобраузер не откроет этот сайт, попробуйте другой");
+  document.querySelector('away_wrap.page_block').style.display = block;
+}
+
 // Импортируем другие js-файлы
 
 

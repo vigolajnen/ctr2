@@ -10,6 +10,7 @@
     margin-bottom: 20px;
   }
   &__field {
+    position: relative;
     display: block;
     margin-bottom: 15px;
     font-family: $Robotomedium;
@@ -49,4 +50,34 @@
     display: flex;
     justify-content: space-around;
   }
+}
+
+.bl-edit-form__field img {
+  position: relative;
+  bottom: -6px;
+}
+
+#block_template_tab .bl-edit-form select,
+#block_template_tab .bl-edit-form input {
+  padding: 2px 10px;
+  border: 1px solid #dddddd;
+  border-radius: 0;
+}
+
+#block_dimensions img,
+#margins img,
+#paddings img {
+  position: relative;
+  bottom: -5px;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  padding: 5px;
+  background: #32c5d2;
+}
+
+#block_dimensions label,
+#margins label,
+#paddings label {
+  margin-left: 10px;
 }

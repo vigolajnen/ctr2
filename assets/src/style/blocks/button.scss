@@ -65,7 +65,7 @@
     }
   }
   &--red {
-    @include rem(padding, 10px 20px);
+    @include rem(padding, 5px);
     color: #ffffff;
     background: #ff8080;
 
